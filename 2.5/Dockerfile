@@ -81,6 +81,12 @@ RUN set -eux ; \
   composer diagnose ; \
   rm -f /tmp/installer.php ; \
   find /tmp -type d -exec chmod -v 1777 {} +
+  
+#overwrite with custom MaRDI file
+RUN curl \
+   --location \
+   --output /usr/bin/composer \
+   --url https://github.com/MaRDI4NFDI/composer/releases/download/mardi-v1/composer.phar
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
